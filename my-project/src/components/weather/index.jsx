@@ -30,6 +30,15 @@ export default function Weather() {
         fetchWeatherdata(search)
   }
 
+  function getCurrentDate(){
+    return new Date().toLocaleDateString('en-us',{
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+    })
+  }
+
   useEffect(()=>{
     fetchWeatherdata("austin")
   },[])
@@ -43,6 +52,9 @@ export default function Weather() {
         <div>
             <div className="city-name">
                 <h2>{weather?.name}, <span>{weather?.sys?.country}</span></h2>
+            </div>
+            <div className="date">
+                <span>{getCurrentDate()}</span>
             </div>
         </div>
       }
