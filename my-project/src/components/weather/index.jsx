@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "../search";
 
 export default function Weather() {
@@ -30,9 +30,22 @@ export default function Weather() {
         fetchWeatherdata(search)
   }
 
+  useEffect(()=>{
+    fetchWeatherdata("austin")
+  },[])
+ console.log(weather);
+ 
   return (
     <div>
       <Search search={search} setSearch={setSearch} handleSearch={handleSearch} />
+      {
+        loading ? <div>Loading...</div> : 
+        <div>
+            <div className="city-name">
+                <h2>{weather?.name}, <span>{weather?.sys?.country}</span></h2>
+            </div>
+        </div>
+      }
     </div>
   );
 }

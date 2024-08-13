@@ -6,7 +6,7 @@ export default function Search({ search, setSearch, handleSearch}) {
       <input
         type="text"
         className="w-9/12  h-45px  border-solid   border  rounded-lg  text-base text-[#555555]  outline-none  py-[2px] px-[15px]"
-        placeholder="ohio"
+        placeholder="Austin"
         name="search"
         value={search}
         onChange={(event) => setSearch(event.target.value)}
