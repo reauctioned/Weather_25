@@ -1,0 +1,8 @@
+.search-button{
+   @apply pb-2 text-[#0077ff]  inline-block w-24 h-10 leading-10 overflow-hidden cursor-pointer my-5 text-[15px] z-10 border-2 border-[#0077ff] rounded relative;
+
+}
+
+.search-button:hover{
+    @apply bg-[hsl(192,80%,48%)] text-white ;
+}
