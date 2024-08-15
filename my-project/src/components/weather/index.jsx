@@ -63,30 +63,24 @@ export default function Weather() {
           </div>
           <div>{weather?.main?.temp}</div>
           <p className="weather-desc">
-            {
-              weather && weather.weather && weather.weather[0] ? weather.weather[0].description : ''
-            }
-            </p>
-            <div className="weather-info">
+            {weather && weather.weather && weather.weather[0]
+              ? weather.weather[0].description
+              : ""}
+          </p>
+          <div className="weather-info">
+            <div>
               <div>
-                <div>
-                  <p className="weather-info-wind">
-                    {
-                      weather?.wind?.speed
-                    }
-                    </p>
-                </div>
-              </div>
-              <div>
-                <div>
-                  <p className="weather-info-humidity">
-                    {
-                      weather?.main?.humidity
-                    }%
-                    </p>
-                </div>
+                <p className="weather-info-wind">{weather?.wind?.speed}</p>
               </div>
             </div>
+            <div>
+              <div>
+                <p className="weather-info-humidity">
+                  {weather?.main?.humidity}%
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
