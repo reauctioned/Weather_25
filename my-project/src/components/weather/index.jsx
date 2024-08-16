@@ -50,7 +50,7 @@ export default function Weather() {
         handleSearch={handleSearch}
       />
       {loading ? (
-        <div className="">Loading...</div>
+        <div className="pb-10">Loading...</div>
       ) : (
         <div>
           <div className="city-name mb-10">
