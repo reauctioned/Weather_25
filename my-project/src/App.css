@@ -4,5 +4,5 @@ body{
 }
 
 .App{
-  @apply text-center
+  @apply text-center font-bold  text-white my-auto
 }

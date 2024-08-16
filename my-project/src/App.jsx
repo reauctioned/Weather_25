@@ -8,7 +8,7 @@ function App() {
   
 
   return (
-    <div className='App'>
+    <div className="App mx-auto rounded-[3rem] bg-[url('https://manybackgrounds.com/images/hd/dreamy-anime-cloud-artwork-sgo1f4fewhr0j17l.jpg')] h-[350px] w-4/5">
         <Weather/> 
     </div>
   )

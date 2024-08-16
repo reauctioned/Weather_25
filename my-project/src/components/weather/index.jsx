@@ -50,18 +50,18 @@ export default function Weather() {
         handleSearch={handleSearch}
       />
       {loading ? (
-        <div>Loading...</div>
+        <div className="">Loading...</div>
       ) : (
         <div>
-          <div className="city-name">
+          <div className="city-name mb-10">
             <h2>
               {weather?.name}, <span>{weather?.sys?.country}</span>
             </h2>
           </div>
-          <div className="date">
+          <div className="date  text-xl italic font-medium">
             <span>{getCurrentDate()}</span>
           </div>
-          <div>{weather?.main?.temp}</div>
+          <div className="temp ">{weather?.main?.temp}</div>
           <p className="weather-desc">
             {weather && weather.weather && weather.weather[0]
               ? weather.weather[0].description
