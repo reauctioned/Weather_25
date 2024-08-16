@@ -61,7 +61,7 @@ export default function Weather() {
           <div className="date  text-xl italic font-medium">
             <span>{getCurrentDate()}</span>
           </div>
-          <div className="temp text-6xl">{weather?.main?.temp}</div>
+          <div className="temp text-6xl">{weather?.main?.temp}°F</div>
           <p className="weather-desc text-xl font-medium mt-0 mb-0">
             {weather && weather.weather && weather.weather[0]
               ? weather.weather[0].description
