@@ -1,12 +1,19 @@
 .search-button{
-   @apply 
+   @apply bg-gray-400 text-black mt-10 p-2 opacity-20  rounded-lg
 }
 
 
-.input-box{
-    
+.input-box:focus{
+    @apply bg-white text-black  opacity-75  outline-none  rounded-lg  mt-10 p-2 w-8/12 border-none 
 }
+
+
+.input-box:not(:focus){
+    @apply bg-gray-400 text-black mt-10 p-2 opacity-20 w-8/12 rounded-lg
+
+
+} 
 
 .search-button:hover{
-    @apply  text-white ;
+    @apply  bg-white text-black  opacity-95;
 }
