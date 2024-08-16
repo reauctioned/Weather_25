@@ -61,22 +61,25 @@ export default function Weather() {
           <div className="date  text-xl italic font-medium">
             <span>{getCurrentDate()}</span>
           </div>
-          <div className="temp ">{weather?.main?.temp}</div>
-          <p className="weather-desc">
+          <div className="temp text-6xl">{weather?.main?.temp}</div>
+          <p className="weather-desc text-xl font-medium mt-0 mb-0">
             {weather && weather.weather && weather.weather[0]
               ? weather.weather[0].description
               : ""}
           </p>
-          <div className="weather-info">
+          <div className="weather-info flex justify-evenly items-center mt-5 py-[30px] px-[20px]">
             <div>
               <div>
+                <p>Wind Speed</p>
                 <p className="weather-info-wind">{weather?.wind?.speed}</p>
               </div>
             </div>
             <div>
               <div>
+                <p>Humidity</p>
                 <p className="weather-info-humidity">
                   {weather?.main?.humidity}%
+        
                 </p>
               </div>
             </div>
