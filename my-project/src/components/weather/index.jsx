@@ -10,7 +10,7 @@ export default function Weather() {
     setLoading(true);
     try {
       const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=7b596558a7303ebc6ee740a6761636f1`
+        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=REACT_APP_WEATHER_API_KEY`
       );
       const data = await res.json();
       console.log(data, "data");
@@ -61,7 +61,7 @@ export default function Weather() {
           <div className="date  text-xl italic font-medium">
             <span>{getCurrentDate()}</span>
           </div>
-          <div className="temp text-6xl">{weather?.main?.temp}°F</div>
+          <div className="temp text-6xl">{(weather?.main?.temp)-273.15}°K</div>
           <p className="weather-desc text-xl font-medium mt-0 mb-0">
             {weather && weather.weather && weather.weather[0]
               ? weather.weather[0].description
