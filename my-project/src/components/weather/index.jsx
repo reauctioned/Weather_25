@@ -9,8 +9,11 @@ export default function Weather() {
   async function fetchWeatherdata(param) {
     setLoading(true);
     try {
+      const apiKey = import.meta.env.VITE_WEATHER_API_KEY;;
+      console.log(apiKey);
+      
       const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=REACT_APP_WEATHER_API_KEY`
+        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=${apiKey}`
       );
       const data = await res.json();
       console.log(data, "data");
@@ -61,7 +64,7 @@ export default function Weather() {
           <div className="date  text-xl italic font-medium">
             <span>{getCurrentDate()}</span>
           </div>
-          <div className="temp text-6xl">{(weather?.main?.temp)-273.15}°K</div>
+          <div className="temp text-6xl">{((weather?.main?.temp)-273.15).toFixed(2)}°C</div>
           <p className="weather-desc text-xl font-medium mt-0 mb-0">
             {weather && weather.weather && weather.weather[0]
               ? weather.weather[0].description
