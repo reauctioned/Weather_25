@@ -5,24 +5,25 @@ export default function Weather() {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const [weather, setWeather] = useState(null);
+  const [error, setError] = useState(null);
 
   async function fetchWeatherdata(param) {
     setLoading(true);
+    setError(null);
     try {
-      const apiKey = import.meta.env.VITE_WEATHER_API_KEY;;
-      console.log(apiKey);
+      const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
       
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=${apiKey}`
       );
-      const data = await res.json();
-      // console.log(data, "data");
-      if (data) {
-        setLoading(false);
-        setWeather(data);
+      if (!res.ok) {
+        throw new Error("Failed to fetch weather data");
       }
+      const data = await res.json();
+      setWeather(data);
     } catch (e) {
-      // console.log(e);
+      setError(e.message);
+    } finally {
       setLoading(false);
     }
   }
@@ -43,7 +44,6 @@ export default function Weather() {
   useEffect(() => {
     fetchWeatherdata("austin");
   }, []);
-  // console.log(weather);
 
   return (
     <div>
@@ -54,6 +54,8 @@ export default function Weather() {
       />
       {loading ? (
         <div className="pb-10">Loading...</div>
+      ) : error ? (
+        <div className="pb-10">Error: {error}</div>
       ) : (
         <div>
           <div className="city-name mb-10">
@@ -61,14 +63,14 @@ export default function Weather() {
               {weather?.name}, <span>{weather?.sys?.country}</span>
             </h2>
           </div>
-          <div className="date  text-xl italic font-medium">
+          <div className="date text-xl italic font-medium">
             <span>{getCurrentDate()}</span>
           </div>
-          <div className="temp text-6xl">{((weather?.main?.temp)-273.15).toFixed(2)}°C</div>
+          <div className="temp text-6xl">
+            {weather?.main?.temp ? ((weather.main.temp - 273.15).toFixed(2)) : "N/A"}°C
+          </div>
           <p className="weather-desc text-xl font-medium mt-0 mb-0">
-            {weather && weather.weather && weather.weather[0]
-              ? weather.weather[0].description
-              : ""}
+            {weather?.weather?.[0]?.description || ""}
           </p>
           <div className="weather-info flex justify-evenly items-center mt-5 py-[30px] px-[20px]">
             <div>
@@ -82,7 +84,6 @@ export default function Weather() {
                 <p>Humidity</p>
                 <p className="weather-info-humidity">
                   {weather?.main?.humidity}%
-        
                 </p>
               </div>
             </div>
