@@ -11,11 +11,11 @@ export default function Weather() {
     setLoading(true);
     setError(null);
     try {
-      const apiKey = "1b0b9aad8046ba8c0830a50e3b04ec28";
+      const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
       
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=${apiKey}`
-      );
+      )
       if (!res.ok) {
         throw new Error("Failed to fetch weather data");
       }
