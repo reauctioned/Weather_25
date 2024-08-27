@@ -16,13 +16,13 @@ export default function Weather() {
         `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=${apiKey}`
       );
       const data = await res.json();
-      console.log(data, "data");
+      // console.log(data, "data");
       if (data) {
         setLoading(false);
         setWeather(data);
       }
     } catch (e) {
-      console.log(e);
+      // console.log(e);
       setLoading(false);
     }
   }
@@ -43,7 +43,7 @@ export default function Weather() {
   useEffect(() => {
     fetchWeatherdata("austin");
   }, []);
-  console.log(weather);
+  // console.log(weather);
 
   return (
     <div>
