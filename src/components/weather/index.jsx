@@ -12,7 +12,6 @@ export default function Weather() {
     setError(null);
     try {
       const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-      
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=${apiKey}`
       )
